@@ -17,9 +17,9 @@ def parse_request():
     function = data.get('function')
     
     if function == 'clear':
-        led_functions.set_color(0,0,0)
+        set_color(0,0,0)
     return index()
     
 if __name__ == '__main__':
-    led_functions.init()
+    init()
     app.run(debug=True, port=80, host='0.0.0.0')
