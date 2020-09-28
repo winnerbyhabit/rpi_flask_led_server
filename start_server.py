@@ -26,6 +26,8 @@ def parse_request():
         set_color(0,0,255)
     elif function == 'all_lila':
         set_color(127,127,0)
+    elif function == 'rainbow':
+        set_rainbow_color()
     return index()
     
 if __name__ == '__main__':

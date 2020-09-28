@@ -25,6 +25,9 @@ def init():
 def set_color(red,blue,green):
     colorWipe(the_strip, Color(green,red,blue), 10)
 
+def set_rainbow_color():
+    rainbow(the_strip)
+
 # Define functions which animate LEDs in various ways.
 def colorWipe(strip, color, wait_ms=50):
     """Wipe color across display a pixel at a time."""
