@@ -7,16 +7,19 @@
 </head>
 <body>
 
-<h2> Vordefinierte Funktionen</h2>
+<h2> Statische Farben </h2>
 <div class="container">
       <div class="btn-group">
         {% for f in functions %}
             <form>
-                <input type="text" id="function" name="function" style="display:none" value="{{f}}">
+                <input type="text" name="function" style="display:none" value="{{f}}">
                 <input type="submit" formmethod="post" class="btn btn-info btn-sq" value="{{f}}">
             </form>
         {% endfor %}
 	</div>
 </div>
+
+<h2> Bewegende Farben </h2>
+
 </body>
 </html>
