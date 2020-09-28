@@ -7,13 +7,17 @@
 <body>
 
 <h2> Vordefinierte Funktionen</h2>
-
-{% for f in functions %}
-<form>
-    <input type="text" id="function" name="function" style="display:none" value="{{f}}">
-    <input type="submit" formmethod="post" class="btn btn-info" value="{{f}}">
-</form>
-{% endfor %}
-
+<div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+            {% for f in functions %}
+            <form>
+                <input type="text" id="function" name="function" style="display:none" value="{{f}}">
+                <input type="submit" formmethod="post" class="btn btn-info" value="{{f}}">
+            </form>
+            {% endfor %}
+        </div>
+	</div>
+</div>
 </body>
 </html>
