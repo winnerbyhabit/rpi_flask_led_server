@@ -23,7 +23,7 @@ def init():
         the_strip.begin()
 
 def set_color(red,blue,green):
-    colorWipe(the_strip, Color(red,blue,green), 10)
+    colorWipe(the_strip, Color(green,red,blue), 10)
 
 # Define functions which animate LEDs in various ways.
 def colorWipe(strip, color, wait_ms=50):
