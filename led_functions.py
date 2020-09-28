@@ -22,8 +22,8 @@ def init():
         # Intialize the library (must be called once before other functions).
         the_strip.begin()
 
-def set_color(red,green,blue):
-    colorWipe(the_strip, Color(red,green,blue), 10)
+def set_color(red,blue,green):
+    colorWipe(the_strip, Color(red,blue,green), 10)
 
 
 # Define functions which animate LEDs in various ways.

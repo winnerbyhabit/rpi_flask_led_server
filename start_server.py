@@ -18,11 +18,11 @@ def parse_request():
     
     if function == 'clear':
         set_color(0,0,0)
-    elif function == 'all_green':
+    elif function == 'all_blue':
         set_color(0,255,0)
     elif function == 'all_red':
         set_color(255,0,0)
-    elif function == 'all_blue':
+    elif function == 'all_green':
         set_color(0,0,255)
     return index()
     
