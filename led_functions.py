@@ -9,7 +9,7 @@ import time
 from neopixel import *
 import argparse
 
-import config
+from config import *
 
 the_strip = None
 
