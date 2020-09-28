@@ -15,6 +15,7 @@ the_strip = None
 
 # initializes the strip
 def init():
+    global the_strip
     if the_strip is None:
          # Create NeoPixel object with appropriate configuration.
         the_strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
