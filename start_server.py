@@ -4,7 +4,7 @@ from flask import Flask,render_template,request
 
 import config
 
-from led_functions import set_color,init
+from led_functions import set_color,init,set_rainbow_color
 
 app = Flask(__name__)
 @app.route('/', methods=['GET'])
