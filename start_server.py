@@ -4,7 +4,7 @@ from flask import Flask,render_template,request
 
 import config
 
-from led_functions import *
+from led_functions import set_color
 
 app = Flask(__name__)
 @app.route('/', methods=['GET'])
@@ -17,7 +17,7 @@ def parse_request():
     function = data.get('function')
     
     if function == 'clear':
-        colorWipe(strip, Color(0,0,0), 10)
+        set_color(0,0,0)
     return index()
     
 if __name__ == '__main__':
