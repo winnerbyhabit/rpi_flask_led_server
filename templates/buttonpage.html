@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2> Vordefinierte Funktionen</h2>
+
+{% for f in functions %}
+<form>
+    <input type="text" id="function" name="function" style="display:none" value="{{f}}">
+    <input type="submit" formmethod="post" class="btn btn-info" value="{{f}}">
+</form>
+{% endfor %}
+
+</body>
+</html>
