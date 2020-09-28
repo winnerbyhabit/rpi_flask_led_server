@@ -27,8 +27,8 @@ def set_color(red,blue,green):
 
 def set_rainbow_color():
     for i in range(the_strip.numPixels()):
-            the_strip.setPixelColor(i, wheel((i+j) & 255))
-        the_strip.show()
+        the_strip.setPixelColor(i, wheel((i+j) & 255))
+    the_strip.show()
 
 # Define functions which animate LEDs in various ways.
 def colorWipe(strip, color, wait_ms=50):
