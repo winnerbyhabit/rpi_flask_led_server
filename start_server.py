@@ -9,7 +9,7 @@ from led_functions import set_color,init
 app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('buttonpage.html', functions=['clear','rainbow','all_green'])
+    return render_template('buttonpage.html', functions=['clear','rainbow','all_green','all_red','all_blue'])
     
 @app.route('/', methods=['POST'])
 def parse_request():
@@ -18,6 +18,12 @@ def parse_request():
     
     if function == 'clear':
         set_color(0,0,0)
+    elif function == 'all_green':
+        set_color(0,255,0)
+    elif function == 'all_red':
+        set_color(255,0,0)
+    elif function == 'all_blue':
+        set_color(0,0,255)
     return index()
     
 if __name__ == '__main__':
