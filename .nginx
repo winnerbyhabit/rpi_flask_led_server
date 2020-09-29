@@ -1,0 +1,11 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    server_name _;
+    
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/{{ ansible_ssh_user }}/{{ app_name }}/{{ app_name }}.sock:;
+    }
+}

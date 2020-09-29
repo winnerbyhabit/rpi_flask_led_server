@@ -1,0 +1,10 @@
+[webservers]
+# Add hosts here
+10.0.0.40
+
+
+[webservers:vars]
+# Local variables for Ansible playbooks
+ansible_ssh_user=pi
+github_user=brennv
+app_name=flask-ansible-example
