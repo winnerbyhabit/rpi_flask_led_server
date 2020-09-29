@@ -52,8 +52,7 @@
   become_method: sudo
   tasks:
   - name: Build rpi_ws281x library
-    script:
-        cmd: /home/{{ ansible_ssh_user }}/{{ app_name }}/build_lib.sh
+    script: /home/{{ ansible_ssh_user }}/{{ app_name }}/build_lib.sh
   - name: template systemd service config
     template:
       src: .service
