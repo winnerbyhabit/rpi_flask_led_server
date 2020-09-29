@@ -7,6 +7,9 @@ import config
 from led_functions import set_color,init,set_rainbow_color
 
 app = Flask(__name__)
+init()
+
+
 @app.route('/', methods=['GET'])
 def index():
     return render_template('buttonpage.html', functions=['clear','rainbow','all_green','all_red','all_blue','all_pink','all_white'])
@@ -33,5 +36,5 @@ def parse_request():
     return index()
     
 if __name__ == '__main__':
-    init()
+    
     app.run(debug=True, port=80, host='0.0.0.0')
