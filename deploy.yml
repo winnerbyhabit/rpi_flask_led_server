@@ -43,16 +43,20 @@
       requirements: /home/{{ ansible_ssh_user }}/{{ app_name }}/requirements.txt
       virtualenv: /home/{{ ansible_ssh_user }}/{{ app_name }}/env
       
-      virtualenv_command: '/usr/bin/python3 -m venv'
-  
+      virtualenv_command: '/usr/bin/python3 -m venv'  
+  - name: template python config
+    template:
+      src: config.py.example
+      dest: /home/{{ ansible_ssh_user }}/{{ app_name }}/config.py
     
-# Configure app systemd service and nginx
+# Configure app systemd service and nginx and build rpi_ws281x library
 - hosts: webservers
   become: yes
   become_method: sudo
   tasks:
   - name: Build rpi_ws281x library
-    script: /home/{{ ansible_ssh_user }}/{{ app_name }}/build_lib.sh
+    shell: /home/{{ ansible_ssh_user }}/{{ app_name }}/build_lib.sh
+
   - name: template systemd service config
     template:
       src: .service
