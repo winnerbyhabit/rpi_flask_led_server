@@ -1,3 +1,5 @@
+#!/bin/sh
+
 cd rpi_ws281x/
 sudo scons
 

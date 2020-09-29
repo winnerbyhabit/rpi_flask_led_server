@@ -33,7 +33,7 @@
   - name: clone repo
     git:
       repo: 'https://github.com/{{ github_user }}/{{ app_name }}.git'
-      dest: /home/pi/flask-ansible-example
+      dest: /home/{{ ansible_ssh_user }}/{{ app_name }}
       update: yes  # Does a git pull if the repo already exists
 
   - name: install modules in a virtualenv
@@ -44,12 +44,16 @@
       virtualenv: /home/{{ ansible_ssh_user }}/{{ app_name }}/env
       
       virtualenv_command: '/usr/bin/python3 -m venv'
-
+  
+    
 # Configure app systemd service and nginx
 - hosts: webservers
   become: yes
   become_method: sudo
   tasks:
+  - name: Build rpi_ws281x library
+    script:
+        cmd: /home/{{ ansible_ssh_user }}/{{ app_name }}/build_lib.sh
   - name: template systemd service config
     template:
       src: .service
