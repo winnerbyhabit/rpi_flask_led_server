@@ -65,12 +65,22 @@
     become_method: sudo
     shell: /home/{{ ansible_ssh_user }}/{{ app_name }}/build_lib.sh
 
-  - name: template systemd service config
+  - name: template systemd service config for gunicorn
     template:
-      src: .service
+      src: .gunicorn_service
       dest: /etc/systemd/system/{{ app_name }}.service
   - name: start systemd app service
     systemd: name={{ app_name }}.service state=restarted enabled=yes
+  - name: template systemd service config for on_file_change
+    template:
+      src: .file_change_service
+      dest: /etc/systemd/system/{{ app_name }}_file_change.service
+  - name: template systemd service config for on file change (path)
+    template:
+      src: .file_change_path
+      dest: /etc/systemd/system/{{ app_name }}_file_change.path
+  - name: start systemd app service file change listener
+    systemd: name={{ app_name }}_file_change.service state=restarted enabled=yes
   - name: template nginx site config
     template:
       src: .nginx

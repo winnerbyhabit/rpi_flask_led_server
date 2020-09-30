@@ -12,7 +12,28 @@ import argparse
 from config import *
 
 the_strip = None
-init()
+
+
+def read_function_from_file():
+    #open and read the file after the appending:
+    f = open(config.tempfile_path, "r")
+    return f.read() 
+
+def function_from_name(function):
+    if function == 'clear':
+        set_color(0,0,0)
+    elif function == 'all_blue':
+        set_color(0,255,0)
+    elif function == 'all_red':
+         set_color(255,0,0)
+    elif function == 'all_green':
+       set_color(0,0,255)
+    elif function == 'all_pink':
+        set_color(127,127,0)
+    elif function == 'rainbow':
+        set_rainbow_color()
+    elif function == 'all_white':
+        set_color(127,127,127)
 
 # initializes the strip
 def init():
@@ -90,36 +111,39 @@ def theaterChaseRainbow(strip, wait_ms=50):
 
 # Main program logic follows:
 if __name__ == '__main__':
+    init()
+    function = read_function_from_file()
+    function_from_name(function)
     # Process arguments
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-c', '--clear', action='store_true', help='clear the display on exit')
-    args = parser.parse_args()
+#    parser = argparse.ArgumentParser()
+#    parser.add_argument('-c', '--clear', action='store_true', help='clear the display on exit')
+#    args = parser.parse_args()
 
     # Create NeoPixel object with appropriate configuration.
-    strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
-    # Intialize the library (must be called once before other functions).
-    strip.begin()
-
-    print ('Press Ctrl-C to quit.')
-    if not args.clear:
-        print('Use "-c" argument to clear LEDs on exit')
-
-    try:
-
-        while True:
-            print ('Color wipe animations.')
-            colorWipe(strip, Color(255, 0, 0))  # Red wipe
-            colorWipe(strip, Color(0, 255, 0))  # Blue wipe
-            colorWipe(strip, Color(0, 0, 255))  # Green wipe
-            print ('Theater chase animations.')
-            theaterChase(strip, Color(127, 127, 127))  # White theater chase
-            theaterChase(strip, Color(127,   0,   0))  # Red theater chase
-            theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
-            print ('Rainbow animations.')
-            rainbow(strip)
-            rainbowCycle(strip)
-            theaterChaseRainbow(strip)
-
-    except KeyboardInterrupt:
-        if args.clear:
-            colorWipe(strip, Color(0,0,0), 10)
+#    strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+#    # Intialize the library (must be called once before other functions).
+#    strip.begin()
+#
+#    print ('Press Ctrl-C to quit.')
+#    if not args.clear:
+#        print('Use "-c" argument to clear LEDs on exit')
+#
+#    try:
+#
+#        while True:
+#            print ('Color wipe animations.')
+#            colorWipe(strip, Color(255, 0, 0))  # Red wipe
+#            colorWipe(strip, Color(0, 255, 0))  # Blue wipe
+#            colorWipe(strip, Color(0, 0, 255))  # Green wipe
+#            print ('Theater chase animations.')
+#            theaterChase(strip, Color(127, 127, 127))  # White theater chase
+#            theaterChase(strip, Color(127,   0,   0))  # Red theater chase
+#            theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
+#            print ('Rainbow animations.')
+#            rainbow(strip)
+#            rainbowCycle(strip)
+#            theaterChaseRainbow(strip)
+#
+#    except KeyboardInterrupt:
+#        if args.clear:
+#            colorWipe(strip, Color(0,0,0), 10)

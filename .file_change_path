@@ -1,0 +1,5 @@
+[Path]
+PathModified=/home/{{ ansible_ssh_user }}/{{ app_name }}/tmp_file
+
+[Install]
+WantedBy=multi-user.target

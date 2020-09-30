@@ -1,0 +1,7 @@
+[Unit]
+Description=file change executor
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=python3 /home/{{ ansible_ssh_user }}/{{ app_name }}/led_functions.py
