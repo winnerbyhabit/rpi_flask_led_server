@@ -40,7 +40,7 @@ def function_from_name(function,args=None):
         set_color(127,127,127)
     elif function == 'colorpick':
         print(args)
-        set_color(args[0],args[1],args[2])
+        set_color(int(args[0]),int(args[1]),int(args[2]))
 # initializes the strip
 def init():
     global the_strip
