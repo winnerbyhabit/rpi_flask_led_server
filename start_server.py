@@ -7,7 +7,7 @@ import config
 from led_functions import set_color,init,set_rainbow_color
 
 app = Flask(__name__)
-init()
+#init()
 
 
 @app.route('/', methods=['GET'])
