@@ -16,7 +16,7 @@ the_strip = None
 
 def read_function_from_file():
     #open and read the file after the appending:
-    f = open(config.tempfile_path, "r")
+    f = open(tempfile_path, "r")
     return f.read() 
 
 def function_from_name(function):
