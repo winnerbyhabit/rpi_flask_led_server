@@ -4,10 +4,20 @@ from flask import Flask,render_template,request
 
 import config
 
+import webcolors
+
 #from led_functions import set_color,init,set_rainbow_color
 
 app = Flask(__name__)
 #init()
+
+def legacycolor_to_rgb(color):
+    color = webcolors.html5_parse_legacy_color(color)
+    return color.red,color.blue,color.green
+
+def hex_to_rgb(color):
+    color = webcolors.hex_to_rgb(color)
+    return color.red,color.blue,color.green
 
 functions=['clear','rainbow','all_green','all_red','all_blue','all_pink','all_white']
 
@@ -27,7 +37,11 @@ def parse_request():
     
     if function in functions:
         write_tempfile(function)
-    
+    if function == 'colorpick':
+        color = data.get('color')
+        red, green, blue = hex_to_rgb(color)
+        write_tempfile('colorpick:{}:{}:{}'.format(red,blue,green))
+        print('colorpick:{}:{}:{}'.format(red,blue,green))
 #    if function == 'clear':
 #        set_color(0,0,0)
 #    elif function == 'all_blue':

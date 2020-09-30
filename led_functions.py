@@ -9,6 +9,8 @@ import time
 from neopixel import *
 import argparse
 
+
+
 from config import *
 
 the_strip = None
@@ -17,9 +19,11 @@ the_strip = None
 def read_function_from_file():
     #open and read the file after the appending:
     f = open(tempfile_path, "r")
-    return f.read() 
+    tmp = f.read() 
+    tmp = tmp.split(':')
+    return tmp[0],tmp[1:]
 
-def function_from_name(function):
+def function_from_name(function,args=None):
     if function == 'clear':
         set_color(0,0,0)
     elif function == 'all_blue':
@@ -34,7 +38,8 @@ def function_from_name(function):
         set_rainbow_color()
     elif function == 'all_white':
         set_color(127,127,127)
-
+    elif function == 'colorpick':
+        set_color(args[0],args[1],args[2])
 # initializes the strip
 def init():
     global the_strip
@@ -112,8 +117,8 @@ def theaterChaseRainbow(strip, wait_ms=50):
 # Main program logic follows:
 if __name__ == '__main__':
     init()
-    function = read_function_from_file()
-    function_from_name(function)
+    function,args = read_function_from_file()
+    function_from_name(function,args)
     # Process arguments
 #    parser = argparse.ArgumentParser()
 #    parser.add_argument('-c', '--clear', action='store_true', help='clear the display on exit')
