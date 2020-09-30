@@ -23,9 +23,11 @@ def init():
         the_strip.begin()
 
 def set_color(red,blue,green):
+    init()
     colorWipe(the_strip, Color(green,red,blue), 10)
 
 def set_rainbow_color():
+    init()
     for i in range(the_strip.numPixels()):
         the_strip.setPixelColor(i, wheel(i & 255))
     the_strip.show()
