@@ -41,7 +41,7 @@ def function_from_name(function,args=None):
     elif function == 'colorpick':
         print(args)
         set_color(int(args[0]),int(args[1]),int(args[2]))
-        
+         
 # irgendwas scheint mit den farben nicht zu funktionieren wie es soll        
 def color_correct(r,g,b):
     return b,r,g

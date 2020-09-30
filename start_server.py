@@ -27,13 +27,14 @@ def write_tempfile(function):
     f.close()
 
 @app.route('/', methods=['GET'])
-def index():
-    return render_template('buttonpage.html', functions=functions)
+def index(color='#FFFFFF'):
+    return render_template('buttonpage.html', functions=functions,last_color=color)
     
 @app.route('/', methods=['POST'])
 def parse_request():
     data = request.form
     function = data.get('function')
+    
     
     if function in functions:
         write_tempfile(function)
@@ -41,21 +42,7 @@ def parse_request():
         color = data.get('color')
         red, green, blue = hex_to_rgb(color)
         write_tempfile('colorpick:{}:{}:{}'.format(red,green,blue))
-        
-#    if function == 'clear':
-#        set_color(0,0,0)
-#    elif function == 'all_blue':
-#        set_color(0,255,0)
-#    elif function == 'all_red':
-#        set_color(255,0,0)
-#    elif function == 'all_green':
-#        set_color(0,0,255)
-#    elif function == 'all_pink':
-#        set_color(127,127,0)
-#    elif function == 'rainbow':
-#        set_rainbow_color()
-#    elif function == 'all_white':
-#        set_color(127,127,127)
+        return index(color)
     return index()
     
 if __name__ == '__main__':
