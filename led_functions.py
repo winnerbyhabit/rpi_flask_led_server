@@ -39,6 +39,7 @@ def function_from_name(function,args=None):
     elif function == 'all_white':
         set_color(127,127,127)
     elif function == 'colorpick':
+        print(args)
         set_color(args[0],args[1],args[2])
 # initializes the strip
 def init():
