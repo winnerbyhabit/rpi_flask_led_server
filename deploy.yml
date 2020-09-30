@@ -35,7 +35,7 @@
       repo: 'https://github.com/{{ github_user }}/{{ app_name }}.git'
       dest: /home/{{ ansible_ssh_user }}/{{ app_name }}
       update: yes  # Does a git pull if the repo already exists
-
+      force: yes
   - name: install modules in a virtualenv
     become: yes
     become_method: sudo
@@ -48,13 +48,21 @@
     template:
       src: config.py.example
       dest: /home/{{ ansible_ssh_user }}/{{ app_name }}/config.py
+#  - name: Write pythonpath to pathfile
+#      shell: echo '/home/{{ ansible_ssh_user }}/{{ app_name }}/rpi_ws281x/build/lib.linux-armv7l-2.7' >> /home/{{ ansible_ssh_user }}/{{ app_name }}/env/lib/python3.7/site-packages/path.pth
+
     
 # Configure app systemd service and nginx and build rpi_ws281x library
 - hosts: webservers
+  environment:
+    PYTHONPATH: ".:/home/{{ ansible_ssh_user }}/{{ app_name }}/rpi_ws281x/python/build/lib.linux-armv6l-3.7/"
   become: yes
   become_method: sudo
+  
   tasks:
   - name: Build rpi_ws281x library
+    become: yes
+    become_method: sudo
     shell: /home/{{ ansible_ssh_user }}/{{ app_name }}/build_lib.sh
 
   - name: template systemd service config

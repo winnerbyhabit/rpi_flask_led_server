@@ -3,7 +3,7 @@ Description=Gunicorn instance to serve {{ app_name }}
 After=network.target
 
 [Service]
-User={{ ansible_ssh_user }}
+User=root
 Group=www-data
 WorkingDirectory=/home/{{ ansible_ssh_user }}/{{ app_name }}
 Environment="PATH=/home/{{ ansible_ssh_user }}/{{ app_name }}/env/bin"
