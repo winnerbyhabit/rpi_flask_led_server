@@ -41,6 +41,11 @@ def function_from_name(function,args=None):
     elif function == 'colorpick':
         print(args)
         set_color(int(args[0]),int(args[1]),int(args[2]))
+        
+# irgendwas scheint mit den farben nicht zu funktionieren wie es soll        
+def color_correct(r,b,g):
+    return b,g,r
+        
 # initializes the strip
 def init():
     global the_strip
@@ -51,6 +56,7 @@ def init():
         the_strip.begin()
 
 def set_color(red,blue,green):
+    red,blue,green = color_correct(red,blue,green)
     colorWipe(the_strip, Color(red,blue,green), 10)
 
 def set_rainbow_color():
