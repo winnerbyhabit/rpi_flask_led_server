@@ -13,11 +13,11 @@ app = Flask(__name__)
 
 def legacycolor_to_rgb(color):
     color = webcolors.html5_parse_legacy_color(color)
-    return color.red,color.blue,color.green
+    return color.red,color.green,color.blue
 
 def hex_to_rgb(color):
     color = webcolors.hex_to_rgb(color)
-    return color.red,color.blue,color.green
+    return color.red,color.green,color.blue
 
 functions=['clear','rainbow','all_green','all_red','all_blue','all_pink','all_white']
 
@@ -40,8 +40,8 @@ def parse_request():
     if function == 'colorpick':
         color = data.get('color')
         red, green, blue = hex_to_rgb(color)
-        write_tempfile('colorpick:{}:{}:{}'.format(red,blue,green))
-        print('colorpick:{}:{}:{}'.format(red,blue,green))
+        write_tempfile('colorpick:{}:{}:{}'.format(red,green,blue))
+        
 #    if function == 'clear':
 #        set_color(0,0,0)
 #    elif function == 'all_blue':
