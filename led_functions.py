@@ -55,7 +55,7 @@ def init():
         # Intialize the library (must be called once before other functions).
         the_strip.begin()
 
-def set_color(red,blue,green):
+def set_color(red,green,blue):
     red,green,blue = color_correct(red,green,blue)
     colorWipe(the_strip, Color(red,green,blue), 10)
 
