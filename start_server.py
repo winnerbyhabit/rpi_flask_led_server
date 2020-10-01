@@ -54,8 +54,8 @@ def parse_request():
             return index(color)
         except ValueError:
             pass
-        except:
-            return 'Hello'
+        except Exception as e:
+            return str(e)
     return index()
     
 if __name__ == '__main__':
