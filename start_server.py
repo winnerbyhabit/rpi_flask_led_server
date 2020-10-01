@@ -11,9 +11,10 @@ import webcolors
 app = Flask(__name__)
 #init()
 
-def legacycolor_to_rgb(color):
-    color = webcolors.html5_parse_legacy_color(color)
+def name_to_rgb(color):
+    color = webcolors.name_to_rgb(color)
     return color.red,color.green,color.blue
+
 
 def hex_to_rgb(color):
     color = webcolors.hex_to_rgb(color)
