@@ -39,15 +39,23 @@ def parse_request():
     if function in functions:
         write_tempfile(function)
     if function == 'colorpick':
-        color = data.get('color')
-        red, green, blue = hex_to_rgb(color)
-        write_tempfile('colorpick:{}:{}:{}'.format(red,green,blue))
-        return index(color)
+        try:
+            color = data.get('color')
+            red, green, blue = hex_to_rgb(color)
+            write_tempfile('colorpick:{}:{}:{}'.format(red,green,blue))
+            return index(color)
+        except ValueError:
+            pass
     if function == 'colorname':
-        color = data.get('color')
-        red, green, blue = hex_to_rgb(color)
-        write_tempfile('colorpick:{}:{}:{}'.format(red,green,blue))
-        return index(color)
+        try:
+            color = data.get('color')
+            red, green, blue = name_to_rgb(color)
+            write_tempfile('colorpick:{}:{}:{}'.format(red,green,blue))
+            return index(color)
+        except ValueError:
+            pass
+        except:
+            return 'Hello'
     return index()
     
 if __name__ == '__main__':
