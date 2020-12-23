@@ -61,7 +61,7 @@ def parse_request():
 
 api_functions=['all','colorpicker']
 
-@app.route('/api/<function>/<color>',methods=['post'])
+@app.route('/api/<function>/<color>',methods=['POST'])
 def api(function,color):
 {
     if function not in api_functions:
