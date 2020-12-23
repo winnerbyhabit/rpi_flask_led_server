@@ -27,11 +27,11 @@ def function_from_name(function,args=None):
     if function == 'clear':
         set_color(0,0,0)
     elif function == 'all_blue':
-        set_color(0,255,0)
+        set_color(0,0,255)
     elif function == 'all_red':
          set_color(255,0,0)
     elif function == 'all_green':
-       set_color(0,0,255)
+       set_color(0,255,0)
     elif function == 'all_pink':
         set_color(255,0,255)
     elif function == 'rainbow':
