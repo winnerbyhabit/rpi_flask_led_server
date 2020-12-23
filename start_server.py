@@ -75,7 +75,6 @@ def api(function,color):
             return False
     elif function == 'all':
         try:
-            color = data.get('color')
             red, green, blue = name_to_rgb(color)
             write_tempfile('colorpick:{}:{}:{}'.format(red,green,blue))
             return index(color)
