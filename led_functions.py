@@ -44,7 +44,7 @@ def function_from_name(function,args=None):
          
 # irgendwas scheint mit den farben nicht zu funktionieren wie es soll        
 def color_correct(r,g,b):
-    return b,r,g
+    return r,b,g
         
 # initializes the strip
 def init():
@@ -57,7 +57,7 @@ def init():
 
 def set_color(red,green,blue):
     red,green,blue = color_correct(red,green,blue)
-    colorWipe(the_strip, Color(red,green,blue), 10)
+    colorWipe(the_strip, Color(color_correct(red,green,blue)), 10)
 
 def set_rainbow_color():
     for i in range(the_strip.numPixels()):
