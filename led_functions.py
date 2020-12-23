@@ -33,7 +33,7 @@ def function_from_name(function,args=None):
     elif function == 'all_green':
        set_color(0,0,255)
     elif function == 'all_pink':
-        set_color(127,127,0)
+        set_color(255,0,255)
     elif function == 'rainbow':
         set_rainbow_color()
     elif function == 'all_white':
@@ -44,7 +44,7 @@ def function_from_name(function,args=None):
          
 # irgendwas scheint mit den farben nicht zu funktionieren wie es soll        
 def color_correct(r,g,b):
-    return r,b,g
+    return g,r,b
         
 # initializes the strip
 def init():
