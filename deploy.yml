@@ -8,14 +8,14 @@
   tasks:
 
 
-  - name: update cache
-    apt: name=python3 state=latest update_cache=yes cache_valid_time=43200
+#  - name: update cache
+#    apt: name=python3 state=latest update_cache=yes cache_valid_time=43200
 #  - name: disable lighttpd
 #    systemd: name=lighttpd state=stopped enabled=no  # To avoid conflicts with nginx
   - name: install packages
     apt: 
         name: 
-   
+          - python3
           - tree         # Optional
           - python3-pip
           - python3-dev
