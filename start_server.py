@@ -58,6 +58,27 @@ def parse_request():
         except Exception as e:
             return str(e)
     return index()
+
+api_functions=['all','colorpicker']
+
+@app.route('/api/<function>/<color>',methods=['post'])
+def api(function,color):
+{
+    if function not in api_functions:
+        return False
+    if function == 'colorpick':
+        try:
+            red, green, blue = hex_to_rgb(color)
+            write_tempfile('colorpick:{}:{}:{}'.format(red,green,blue))
+            return index(color)
+        except ValueError:
+            return False
+    elif function == 'all':
+        red, green, blue = name_to_rgb(color)
+        write_tempfile('colorpick:{}:{}:{}'.format(red,green,blue))
+        return index(color)
+    return True
+}
     
 if __name__ == '__main__':
     
