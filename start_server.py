@@ -63,7 +63,7 @@ api_functions=['all','colorpicker']
 
 @app.route('/api/<function>/<color>',methods=['POST'])
 def api(function,color):
-{
+
     if function not in api_functions:
         return False
     if function == 'colorpick':
@@ -74,11 +74,17 @@ def api(function,color):
         except ValueError:
             return False
     elif function == 'all':
-        red, green, blue = name_to_rgb(color)
-        write_tempfile('colorpick:{}:{}:{}'.format(red,green,blue))
-        return index(color)
+        try:
+            color = data.get('color')
+            red, green, blue = name_to_rgb(color)
+            write_tempfile('colorpick:{}:{}:{}'.format(red,green,blue))
+            return index(color)
+        except ValueError:
+            pass
+        except Exception as e:
+            return str(e)
     return True
-}
+
     
 if __name__ == '__main__':
     
