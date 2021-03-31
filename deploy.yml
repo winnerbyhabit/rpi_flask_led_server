@@ -66,13 +66,13 @@
   become_method: sudo
   
   tasks:
-  - name: Build rpi_ws281x library
-    become: yes
-    become_method: sudo
+#  - name: Build rpi_ws281x library
+#    become: yes
+#    become_method: sudo
     
-    shell: 
-        cmd: /home/{{ ansible_ssh_user }}/{{ app_name }}/build_lib.sh
-        chdir: /home/{{ ansible_ssh_user }}/{{ app_name }}/
+#    shell: 
+#        cmd: /home/{{ ansible_ssh_user }}/{{ app_name }}/build_lib.sh
+#        chdir: /home/{{ ansible_ssh_user }}/{{ app_name }}/
 
   - name: template systemd service config for gunicorn
     template:
