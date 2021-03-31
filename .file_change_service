@@ -4,4 +4,4 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=python3 /home/{{ ansible_ssh_user }}/{{ app_name }}/led_functions.py >> /tmp/led.log
+ExecStart=/home/{{ ansible_ssh_user }}/{{ app_name }}/env/bin/python3 /home/{{ ansible_ssh_user }}/{{ app_name }}/led_functions.py >> /tmp/led.log
