@@ -14,6 +14,7 @@
 #    systemd: name=lighttpd state=stopped enabled=no  # To avoid conflicts with nginx
   - name: install packages
     apt: 
+        update_cache: yes
         name: 
           - python3
           - tree         # Optional
@@ -22,6 +23,8 @@
           - python3-venv
           - nginx
           - ufw
+          - git
+          - scons
         state: latest  
         
   - name: Install virtualenv via pip
@@ -66,7 +69,10 @@
   - name: Build rpi_ws281x library
     become: yes
     become_method: sudo
-    shell: /home/{{ ansible_ssh_user }}/{{ app_name }}/build_lib.sh
+    
+    shell: 
+        cmd: /home/{{ ansible_ssh_user }}/{{ app_name }}/build_lib.sh
+        chdir: /home/{{ ansible_ssh_user }}/{{ app_name }}/
 
   - name: template systemd service config for gunicorn
     template:
