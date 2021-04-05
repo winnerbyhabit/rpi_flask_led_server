@@ -44,7 +44,7 @@ def function_from_name(function,args=None):
          
 # irgendwas scheint mit den farben nicht zu funktionieren wie es soll        
 def color_correct(r,g,b):
-    return g,r,b
+    return r,g,b
         
 # initializes the strip
 def init():
