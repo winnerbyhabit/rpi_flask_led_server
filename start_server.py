@@ -75,8 +75,11 @@ def api(function,color):
             return False
     elif function == 'all':
         try:
-            red, green, blue = name_to_rgb(color)
-            write_tempfile('colorpick:{}:{}:{}'.format(red,green,blue))
+            if color == 'rainbow':
+                write_tempfile('rainbow')
+            else:
+                red, green, blue = name_to_rgb(color)
+                write_tempfile('colorpick:{}:{}:{}'.format(red,green,blue))
             return index(color)
         except ValueError:
             pass
